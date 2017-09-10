@@ -1,0 +1,44 @@
+﻿1. Discuss the model used in the project.
+   
+The Kinematic model was used for the controller; Kinematic model is a simple model which describes the vehicle behavior taking into account the vehicle x and y coordinates, orientation, velocity, as well as the cross talk errors. The model ignore the factors like mass, gravity , tire forces, this makes the model simple and effective in most cases.
+   the model equations combines the state variables as well as actuator outputs(acceleration, steering angle) from previous time stamp to calculate the current state. The equations used are as below:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+Here Lf is the distance between the front of the vehicle and the its center of gravity. This was provided by udacity.
+
+
+
+2. Discuss the reason behind choosing the value of N(time stamp length) and dt(duration between timestamps)
+   
+The value used in the project is 10 for N and 0.1 for dt, these values make the time duration one second. Lot of other combinations were tried for N, dt but mot used because when increasing the time duration the car as not able to smoothly drive around the track and was making sudden changes near corners sometimes. 1-1.5 second time duration gave the best performance in terms of driving around the track. Some other values tried were 20/0.1, 15/ 0.1, 20/0.005, 6/0.15 etc.
+
+
+
+3.  Discuss the steps for Preprocessing of waypoints.
+
+The waypoints were transformed to be in car coordinate system so that the car can act as origin and the orientation angle is also zero. This can be seen in main.cpp lines( 105-113).
+
+
+
+4. How was the latency Handled. 
+	
+As described in the 1st answer the Kinematic equation of the current time stamp depend of the previous sate and actuations but  to handle an additional delay of 100ms (which is the timestamp interval) the actuations were applied one time stamp later. The code showing the same is in MPC.cpp in lines (108-111). Also the cost cost function is penalized for smooth driving as shown in MPC.cpp in lines(58-75).

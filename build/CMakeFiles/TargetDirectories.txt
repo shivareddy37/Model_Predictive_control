@@ -1,0 +1,3 @@
+/home/shiva/udacity_projects/Model_Predictive_control/build/CMakeFiles/edit_cache.dir
+/home/shiva/udacity_projects/Model_Predictive_control/build/CMakeFiles/rebuild_cache.dir
+/home/shiva/udacity_projects/Model_Predictive_control/build/CMakeFiles/mpc.dir
