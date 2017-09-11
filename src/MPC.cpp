@@ -58,7 +58,7 @@ class FG_eval {
     for (int i = 0; i < N; i++) {
       fg[0] += 3000*CppAD::pow(vars[cte_start + i], 2);
       fg[0] += 3000*CppAD::pow(vars[epsi_start + i], 2);
-      fg[0] += 0.3 * CppAD::pow(vars[v_start + i] - ref_v, 2);
+      fg[0] +=  CppAD::pow(vars[v_start + i] - ref_v, 2);
     }
 
     // (2) Cost increases with use of actuators
